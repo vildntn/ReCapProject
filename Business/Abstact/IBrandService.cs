@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Business.Abstact
 {
-    interface IBrandService
+   public interface IBrandService
     {
         IDataResult<List<Brand>> GetAll();
 

@@ -27,6 +27,12 @@ namespace Business.Concrete
             return new ErrorResult(Messages.UnSuccessful);
         }
 
+        public IResult Delete(Car car)
+        {
+            _carDal.Delete(car);
+            return new SuccessResult(Messages.CarDeleted);
+        }
+
         public IDataResult<List<Car>> GetAll()
         {
          
