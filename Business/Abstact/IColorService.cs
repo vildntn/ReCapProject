@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using Entities.Concrete;
 using System.Text;
+using Core.Utilities.Results;
 
 namespace Business.Abstact
 {
     interface IColorService
     {
-        List<Color> GetAll();
+        IDataResult<List<Color>> GetAll();
 
-        Color GetById(int id);
+        IDataResult<Color> GetById(int id);
 
     }
 }
