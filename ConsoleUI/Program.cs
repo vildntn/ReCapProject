@@ -25,11 +25,21 @@ namespace ConsoleUI
             //userManager.Add(user1);
 
             //AddCustomer(userManager);
-            RentalCar(rentalManager);
+            //RentalCar(rentalManager);
+            GetAllCar(carManager);
 
 
 
 
+        }
+
+        public static void GetAllCar(CarManager carManager)
+        {
+            foreach (var result in carManager.GetCarDetails().Data)
+            {
+                Console.WriteLine(result.BrandName);
+            }
+                
         }
         public static void AddCustomer(UserManager userManager)
         {
@@ -44,9 +54,9 @@ namespace ConsoleUI
                 LastName = lastName,
             };
             userManager.Add(user2);
-            foreach (var resault in userManager.GetAll().Data)
+            foreach (var result in userManager.GetAll().Data)
             {
-                Console.WriteLine(resault.FirstName+" "+resault.LastName);
+                Console.WriteLine(result.FirstName+" "+result.LastName);
 
             } 
         }
