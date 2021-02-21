@@ -24,9 +24,22 @@ namespace ConsoleUI
             //};
             //userManager.Add(user1);
 
-            //AddCustomer(userManager);
+            AddCustomer(userManager);
             //RentalCar(rentalManager);
-            GetAllCar(carManager);
+
+            //Brand addBrand = new Brand() { BrandName="Isuzu"};
+            //Color addColor = new Color()
+            //{
+            //    ColorName = "Yeşil"
+            //};
+            //Rental addRental = new Rental()
+            //{
+            //    CarId = 7,
+            //    CustomerId = 2,
+            //    RentDate = DateTime.Now,
+            //    ReturnDate =null
+            //};
+            //GetAllCar(carManager);
 
 
 
