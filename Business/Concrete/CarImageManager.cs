@@ -73,7 +73,7 @@ namespace Business.Concrete
         }
         public IDataResult<CarImage> GetById(int id)
         {
-            return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.CarId == id));
+            return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.Id == id));
         }
 
         private IDataResult<List<CarImage>> CheckIfCarImageNotExist(int id)

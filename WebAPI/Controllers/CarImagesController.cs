@@ -49,7 +49,7 @@ namespace WebAPI.Controllers
         [HttpDelete("delete")]
         public IActionResult Delete([FromForm] CarImage carImage)
         {
-            var deletedImage = _carImageService.GetById(carImage.CarId).Data;
+            var deletedImage = _carImageService.GetById(carImage.Id).Data;
             var result = _carImageService.Delete(deletedImage);
             if (result.Success)
             {
@@ -63,7 +63,7 @@ namespace WebAPI.Controllers
         {
             //update ve delete işlemlerinde sileceği carImage'i bulamıyordu.
             //Bu yüzden getById operasyonuna parametreden gelen Id'yi carId olarak belirttik
-            var newCarImage = _carImageService.GetById(carImage.CarId).Data;
+            var newCarImage = _carImageService.GetById(carImage.Id).Data;
             var result = _carImageService.Update(file, newCarImage);
 
             if (result.Success)
