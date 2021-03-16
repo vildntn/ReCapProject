@@ -4,6 +4,7 @@ using Business.Concrete;
 using DataAccess.Concrete.InMemory;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Abstact;
+using Core.Entities.Concreate;
 
 namespace ConsoleUI
 {

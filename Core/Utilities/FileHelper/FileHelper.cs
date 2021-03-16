@@ -25,14 +25,14 @@ namespace Core.Utilities.FileHelper
             string extension = Path.GetExtension(file.FileName);
             string imageName = Guid.NewGuid().ToString() + "_" + extension;
             CreateImageFile(sourcePath + folderName + imageName, file);
-            return new SuccessResult((folderName + imageName));
+            return new SuccessResult((folderName + imageName).Replace("\\", "/"));
         }
 
         public static IResult Delete(string path)
         {
             try
             {
-                File.Delete(path);
+                File.Delete(path.Replace("\\", "/"));
 
             }
             catch (Exception exception)
@@ -55,7 +55,7 @@ namespace Core.Utilities.FileHelper
             string extension = Path.GetExtension(file.FileName);
             string imageName = Guid.NewGuid().ToString() + "_" + extension;
             CreateImageFile(sourcePath + folderName + imageName, file);
-            return new SuccessResult((folderName + imageName));
+            return new SuccessResult((folderName + imageName).Replace("\\", "/"));
 
         }
         public static void CreateImageFile(string path, IFormFile file)
