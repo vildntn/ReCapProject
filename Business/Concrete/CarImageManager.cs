@@ -76,16 +76,16 @@ namespace Business.Concrete
             return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.Id == id));
         }
 
-        private IDataResult<List<CarImage>> CheckIfCarImageNotExist(int id)
+        private List<CarImage> CheckIfCarImageNotExist(int carId)
         {
-            string path = "\\wwwroot\\CarImages\\RentACar.png";
-            var result = _carImageDal.GetAll(c => c.Id == id).Any();
+            string path = ("\\CarImages\\RentACar.png").Replace("\\", "/");
+            var result = _carImageDal.GetAll(c => c.CarId == carId).Any();
             if (!result)
             {
-                List<CarImage> defaultCarImage = new List<CarImage> { new CarImage { CarId = id, ImagePath = path, Date = DateTime.Now } };
-                return new SuccessDataResult<List<CarImage>>(defaultCarImage);
+                List<CarImage> defaultCarImage = new List<CarImage> { new CarImage { CarId = carId, ImagePath = path, Date = DateTime.Now } };
+                return new List<CarImage>(defaultCarImage);
             }
-            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == id));
+            return new List<CarImage>(_carImageDal.GetAll(c => c.CarId == carId));
         }
 
 
@@ -100,7 +100,10 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-
+        public IDataResult<List<CarImage>> GetImageByCarId(int carId)
+        {
+            return new SuccessDataResult<List<CarImage>>(CheckIfCarImageNotExist(carId));
+        }
     }
   
 }
