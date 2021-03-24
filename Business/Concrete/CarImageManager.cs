@@ -78,14 +78,14 @@ namespace Business.Concrete
 
         private List<CarImage> CheckIfCarImageNotExist(int carId)
         {
-            string path = ("\\CarImages\\RentACar.png").Replace("\\", "/");
-            var result = _carImageDal.GetAll(c => c.CarId == carId).Any();
-            if (!result)
+            string path = @"\CarImages\rentacars.jpg".Replace("\\", "/");
+            var result = _carImageDal.GetAll(c => c.CarId == carId);
+            if (!result.Any())
             {
-                List<CarImage> defaultCarImage = new List<CarImage> { new CarImage { CarId = carId, ImagePath = path, Date = DateTime.Now } };
-                return new List<CarImage>(defaultCarImage);
+                return new List<CarImage> { new CarImage { CarId = carId, ImagePath = path , Date=DateTime.Now} };
+                
             }
-            return new List<CarImage>(_carImageDal.GetAll(c => c.CarId == carId));
+            return result;
         }
 
 
