@@ -1,3 +1,4 @@
+using Core.DependencyResolver;
 using Core.Extensions;
 using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
@@ -58,8 +59,11 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
-            ServiceTool.Create(services);
-            //services.AddDependencyResolvers(new Core.Utilities.IoC.ICoreModule[] { new CoreModule() });
+            services.AddDependencyResolvers(new ICoreModule[] {
+                new CoreModule() 
+            });
+            // ServiceTool.Create(services);
+
 
         }
             // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

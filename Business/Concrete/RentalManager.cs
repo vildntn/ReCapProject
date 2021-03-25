@@ -1,11 +1,13 @@
 ﻿using Business.Abstact;
 using Business.Constants;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstact;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -22,14 +24,16 @@ namespace Business.Concrete
 
         public IResult Add(Rental rental)
         {
-            if (rental.ReturnDate !=null)
+            var result = BusinessRules.Run(CheckIfCarUsage(rental.CarId));
+            if (result!=null)
             {
-                _rentalDal.Add(rental);
-                return new SuccessResult(Messages.RentalAdded);
+                return result;
             }
-            return new ErrorResult(Messages.UnSuccessful);
-            
-            
+
+            _rentalDal.Add(rental);
+            return new SuccessResult(Messages.RentalAdded);
+             
+
         }
 
         public IResult Delete(Rental rental)
@@ -57,6 +61,20 @@ namespace Business.Concrete
         {
             _rentalDal.Update(rental);
             return new SuccessResult(Messages.RentalUpdated);
+        }
+
+
+        private IResult CheckIfCarUsage(int id)
+        {
+            var result = _rentalDal.GetRentalDetails(r => r.CarId == id).FirstOrDefault();
+            if (result.ReturnDate !=null)
+            {
+               
+                return new SuccessResult();
+
+            }
+            return new ErrorResult(Messages.UnSuccessful);
+
         }
     }
 }

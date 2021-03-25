@@ -1,8 +1,11 @@
-﻿using Core.Utilities.IoC;
+﻿using Core.CrossCuttingConcerns.Caching;
+using Core.CrossCuttingConcerns.Caching.Microsoft;
+using Core.Utilities.IoC;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Core.DependencyResolver
@@ -12,9 +15,10 @@ namespace Core.DependencyResolver
         public void Load(IServiceCollection serviceCollection)
         {
             serviceCollection.AddMemoryCache(); //hazır bir injection , arka planda, bellekte hazır bir Imemorycache instance oluşturuyor.
-            //aşşağıdaki gibi interfacelerimiz  olmadığı zamanda yapılbilir
+            //aşşağıdaki gibi interfacelerimiz  olmadığı zamanda yapılbilir --> serviceCollection.AddSingleton<HttpContextAccessor>();
             serviceCollection.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            //serviceCollection.AddSingleton<ICacheManager, MemoryCacheManager>();
+            serviceCollection.AddSingleton<ICacheManager, MemoryCacheManager>();
+            serviceCollection.AddSingleton<Stopwatch>() ;
         }
     }
 }

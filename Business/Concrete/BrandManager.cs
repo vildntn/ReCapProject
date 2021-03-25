@@ -7,8 +7,9 @@ using DataAccess.Abstact;
 using Core.Utilities.Results;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
-using Core.Aspects.Validation;
+using Core.Aspects.Autofac.Validation;
 using Business.BusinessAspects.Autofac;
+using Core.Aspects.Autofac.Caching;
 
 namespace Business.Concrete
 {
@@ -29,7 +30,7 @@ namespace Business.Concrete
             
            
         }
-
+        [CacheRemoveAspect("IBrandService.Get")]
         public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);

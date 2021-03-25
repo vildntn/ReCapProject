@@ -1,5 +1,6 @@
 ﻿using Business.Abstact;
 using Business.Constants;
+using Core.Aspects.Autofac.Caching;
 using Core.Utilities.Results;
 using DataAccess.Abstact;
 using Entities.Concrete;
@@ -17,7 +18,7 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
-
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
             if (car.DailyPrice > 0)
@@ -27,13 +28,13 @@ namespace Business.Concrete
             }
             return new ErrorResult(Messages.UnSuccessful);
         }
-
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
             return new SuccessResult(Messages.CarDeleted);
         }
-
+        [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
          
@@ -64,12 +65,13 @@ namespace Business.Concrete
         {
             return new SuccessDataResult <List<Car >>( _carDal.GetAll(p => p.BrandId == id),Messages.CarListed);
         }
-
+        [CacheAspect]
         public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
             return new SuccessDataResult<List<Car>> (_carDal.GetAll(p => p.ColorId == id),Messages.CarListed);
         }
 
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Car car)
         {
             _carDal.Update(car);
