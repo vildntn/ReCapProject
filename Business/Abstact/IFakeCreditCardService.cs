@@ -11,7 +11,7 @@ namespace Business.Abstact
         IResult Add(FakeCreditCard fakeCreditCard);
         IResult Update(FakeCreditCard fakeCreditCard);
         IResult Delete(FakeCreditCard fakeCreditCard);
-        IResult IsCreditCardExist(FakeCreditCard fakeCreditCard);
+
         IDataResult<List<FakeCreditCard>> GetAll();
 
     }

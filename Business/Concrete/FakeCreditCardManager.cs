@@ -36,11 +36,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<FakeCreditCard>>(_fakeCreditCardDal.GetAll());
         }
 
-        public IResult IsCreditCardExist(FakeCreditCard fakeCreditCard)
-        {
-            throw new NotImplementedException();
-        }
-
+       
         public IResult Update(FakeCreditCard fakeCreditCard)
         {
             _fakeCreditCardDal.Update(fakeCreditCard);
