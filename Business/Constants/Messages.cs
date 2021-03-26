@@ -34,6 +34,7 @@ namespace Business.Constants
         public static string RentalDeleted = "Rental Deleted";
         public static string RentalUpdated = "Rental Updated";
         public static string RentalListed = "Rental Listed";
+        public static string RentalUnSuccessful = "You cannot rent this car as it is already leased by someone else.";
 
 
         public static string CustomerAdded = "New Customer Added";

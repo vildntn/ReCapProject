@@ -25,9 +25,9 @@ namespace Business.Concrete
         public IResult Add(Rental rental)
         {
             var result = BusinessRules.Run(CheckIfCarUsage(rental.CarId));
-            if (result!=null)
+            if (result !=null)
             {
-                return result;
+                return new ErrorResult(Messages.RentalUnSuccessful);
             }
 
             _rentalDal.Add(rental);
@@ -66,15 +66,14 @@ namespace Business.Concrete
 
         private IResult CheckIfCarUsage(int id)
         {
-            var result = _rentalDal.GetRentalDetails(r => r.CarId == id).FirstOrDefault();
-            if (result.ReturnDate !=null)
+            var result = _rentalDal.Get(r => r.CarId == id&&r.ReturnDate==null);
+            if (result==null)
             {
-               
                 return new SuccessResult();
 
             }
-            return new ErrorResult(Messages.UnSuccessful);
-
+            
+            return new ErrorResult(Messages.RentalUnSuccessful);
         }
     }
 }
