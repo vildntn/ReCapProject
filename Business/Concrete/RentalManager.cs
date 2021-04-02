@@ -17,14 +17,18 @@ namespace Business.Concrete
         
     {
         IRentalDal _rentalDal;
-        public RentalManager(IRentalDal rentalDal)
+
+        public RentalManager(IRentalDal rentalDal
+            
+            )
         {
             _rentalDal = rentalDal;
+            
         }
 
         public IResult Add(Rental rental)
         {
-            var result = BusinessRules.Run(CheckIfCarUsage(rental.CarId));
+            var result = BusinessRules.Run(CheckIfCarUsage(rental));
             if (result !=null)
             {
                 return new ErrorResult(Messages.RentalUnSuccessful);
@@ -35,7 +39,6 @@ namespace Business.Concrete
              
 
         }
-
         public IResult Delete(Rental rental)
         {
             _rentalDal.Delete(rental);
@@ -49,8 +52,11 @@ namespace Business.Concrete
 
         public IDataResult<Rental> GetById(int id)
         {
+           
             return new SuccessDataResult<Rental>(_rentalDal.Get(r=>r.RentId==id),Messages.RentalListed);
         }
+
+        
 
         public IDataResult<List<RentalDetailDto>> GetRentalDetails()
         {
@@ -64,16 +70,20 @@ namespace Business.Concrete
         }
 
 
-        private IResult CheckIfCarUsage(int id)
+        public IResult CheckIfCarUsage(Rental rental)
         {
-            var result = _rentalDal.Get(r => r.CarId == id&&r.ReturnDate==null);
+            var result = _rentalDal.Get(r => r.CarId == rental.CarId && r.ReturnDate==null);
             if (result==null)
             {
+               
                 return new SuccessResult();
 
             }
             
             return new ErrorResult(Messages.RentalUnSuccessful);
         }
+
+
+
     }
 }

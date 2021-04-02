@@ -90,6 +90,18 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+
+        [HttpPost("checkifcarusage")]
+        public IActionResult GetId(Rental rental)
+        {
+            var result = _rentalService.CheckIfCarUsage(rental);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
     }
     }
 

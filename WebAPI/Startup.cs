@@ -73,6 +73,7 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.ConfigureCustomExceptionMiddleware();
 
             app.UseCors(builder=>builder.WithOrigins("http://localhost:4200/").AllowAnyHeader().AllowAnyOrigin()); //bu adresten gelen isteklere izin ver
             //AllowAnyOrigin() --> her yerden gelen her istege izin ver.

@@ -13,6 +13,8 @@ namespace Business.Abstact
         IResult Delete(FakeCreditCard fakeCreditCard);
 
         IDataResult<List<FakeCreditCard>> GetAll();
+    
+        IDataResult<FakeCreditCard> GetById(int id);
 
     }
 }

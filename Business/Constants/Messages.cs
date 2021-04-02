@@ -66,5 +66,8 @@ namespace Business.Constants
         public static string PasswordError = "The Password is Incorrect.";
         public static string UserNotFound="User Not Found";
         public static string UserRegistered = "User Registration is Successful.";
+        public static string fakeCreditCard = "Credit Card Added.";
+
+        public static string SuccessfulPayment= "Payment Successfully Completed";
     }
 }

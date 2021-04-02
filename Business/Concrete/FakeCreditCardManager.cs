@@ -21,7 +21,7 @@ namespace Business.Concrete
         public IResult Add(FakeCreditCard fakeCreditCard)
         {
             _fakeCreditCardDal.Add(fakeCreditCard);
-            return new SuccessResult();
+            return new SuccessResult(Messages.fakeCreditCard);
 
         }
 
@@ -36,7 +36,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<FakeCreditCard>>(_fakeCreditCardDal.GetAll());
         }
 
-       
+        public IDataResult<FakeCreditCard> GetById(int id)
+        {
+            return new SuccessDataResult<FakeCreditCard>(_fakeCreditCardDal.Get(f => f.Id == id));
+        }
+
         public IResult Update(FakeCreditCard fakeCreditCard)
         {
             _fakeCreditCardDal.Update(fakeCreditCard);

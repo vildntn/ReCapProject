@@ -40,6 +40,20 @@ namespace DataAccess.Concrete.EntityFramework
             }
 
         }
+        
+        //public bool CheckIfCarUsage(DateTime rentDate, DateTime? returnDate, int carId)
+        //{
+        //    using (ReCapContext context = new ReCapContext()) 
+        //    {
+        //        bool carReturnDate = context.Set<Rental>().Any(r => r.CarId == carId && r.ReturnDate == null);
+        //        if (!carReturnDate)
+        //        {
+        //            return true;
+        //        }
 
+        //        return false;
+        //    }
+        //}
     }
-}
+ }
+   
