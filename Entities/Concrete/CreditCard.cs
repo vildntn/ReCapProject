@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entities.Concrete
 {
-    public class FakeCreditCard:IEntity
+    public class CreditCard:IEntity
     {
         public int Id { get; set; }
         public string NameOnTheCard { get; set; }
@@ -13,7 +13,7 @@ namespace Entities.Concrete
         public string ExpirationMonth { get; set; }
         public string CardNumber { get; set; }
         public string CardCvv { get; set; }
-        public decimal Money { get; set; }
+        public decimal Amount { get; set; }
 
     }
 }

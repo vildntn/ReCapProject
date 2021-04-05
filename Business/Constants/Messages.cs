@@ -69,5 +69,6 @@ namespace Business.Constants
         public static string fakeCreditCard = "Credit Card Added.";
 
         public static string SuccessfulPayment= "Payment Successfully Completed";
+        public static string WrongCreditCardInformation = "Credit Card Information Is Wrong.";
     }
 }

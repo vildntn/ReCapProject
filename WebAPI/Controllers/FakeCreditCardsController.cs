@@ -13,17 +13,17 @@ namespace WebAPI.Controllers
     [ApiController]
     public class FakeCreditCardsController : ControllerBase
     {
-        IFakeCreditCardService _fakeCreditCardService;
+        ICreditCardService _creditCardService;
 
-        public FakeCreditCardsController(IFakeCreditCardService fakeCreditCardService)
+        public FakeCreditCardsController(ICreditCardService creditCardService)
         {
-            _fakeCreditCardService = fakeCreditCardService;
+            _creditCardService = creditCardService;
         }
 
         [HttpPost("add")]
-        public IActionResult Add(FakeCreditCard fakeCreditCard)
+        public IActionResult Add(CreditCard creditCard)
         {
-            var result = _fakeCreditCardService.Add(fakeCreditCard);
+            var result = _creditCardService.Add(creditCard);
             if (result.Success)
             {
                 return Ok(result);
@@ -32,9 +32,9 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpDelete("delete")]
-        public IActionResult Delete(FakeCreditCard fakeCreditCard)
+        public IActionResult Delete(CreditCard creditCard)
         {
-            var result = _fakeCreditCardService.Delete(fakeCreditCard);
+            var result = _creditCardService.Delete(creditCard);
             if (result.Success)
             {
                 return Ok(result);
@@ -44,9 +44,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("update")]
-        public IActionResult Update(FakeCreditCard fakeCreditCard)
+        public IActionResult Update(CreditCard creditCard)
         {
-            var result = _fakeCreditCardService.Update(fakeCreditCard);
+            var result = _creditCardService.Update(creditCard);
             if (result.Success)
             {
                 return Ok(result);
@@ -58,7 +58,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _fakeCreditCardService.GetAll();
+            var result = _creditCardService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -70,7 +70,7 @@ namespace WebAPI.Controllers
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
-            var result = _fakeCreditCardService.GetById(id);
+            var result = _creditCardService.GetById(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -78,5 +78,19 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+
+        [HttpPost("iscreditcardexist")]
+        public IActionResult IsCreditCardExist(CreditCard creditCard)
+        {
+            var result = _creditCardService.IsCreditCardExist(creditCard);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+
     }
 }

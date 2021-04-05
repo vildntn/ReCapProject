@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataAccess.Abstact
 {
-    public interface IFakeCreditCardDal : IEntityRepository<FakeCreditCard>
+    public interface ICreditCardDal : IEntityRepository<CreditCard>
     {
        
     }

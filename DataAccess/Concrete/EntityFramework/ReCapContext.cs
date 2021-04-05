@@ -23,6 +23,6 @@ namespace DataAccess.Concrete
         public DbSet<CarImage> CarImages { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
-        public DbSet<FakeCreditCard> FakeCards { get; set; }
+        public DbSet<CreditCard> FakeCards { get; set; }
     }
 }

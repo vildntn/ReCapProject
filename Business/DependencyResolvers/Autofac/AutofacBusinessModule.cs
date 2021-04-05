@@ -41,8 +41,8 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<JWTHelper>().As<ITokenHelper>();
             // builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>();
 
-            builder.RegisterType<FakeCreditCardManager>().As<IFakeCreditCardService>().SingleInstance();
-            builder.RegisterType<EfFakeCreditCardDal>().As<IFakeCreditCardDal>().SingleInstance();
+            builder.RegisterType<CreditCardManager>().As<ICreditCardService>().SingleInstance();
+            builder.RegisterType<EfCreditCard>().As<ICreditCardDal>().SingleInstance();
 
 
 
