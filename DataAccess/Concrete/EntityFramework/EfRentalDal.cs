@@ -29,6 +29,7 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                 Id = r.RentId,
                                 CarId=ca.CarId,
+                                MinFindexScore=ca.MinFindexScore,
                                 CustomerId=cu.CustomerId,
                                 BrandName =br.BrandName,
                                 CustomerName=u.FirstName+" "+ u.LastName,

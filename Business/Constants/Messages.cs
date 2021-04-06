@@ -70,5 +70,7 @@ namespace Business.Constants
 
         public static string SuccessfulPayment= "Payment Successfully Completed";
         public static string WrongCreditCardInformation = "Credit Card Information Is Wrong.";
+
+        public static string InsufficientFindeexScore = "Your Findex points are not enough to rent this car.";
     }
 }

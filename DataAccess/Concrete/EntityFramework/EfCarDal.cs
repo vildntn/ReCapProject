@@ -30,6 +30,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  CarId=c.CarId,
                                  ColorId=o.ColorId,
                                  BrandName = b.BrandName,
+                                 MinFindexScore=c.MinFindexScore,
                                  ColorName = o.ColorName,
                                  DailyPrice = c.DailyPrice,
                                  Description = c.Description,

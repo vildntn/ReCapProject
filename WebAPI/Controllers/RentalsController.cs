@@ -102,6 +102,20 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+
+        [HttpPost("checkifminfindexscoreenough")]
+        public IActionResult CheckIfMinFindexScoreEnough(int customerId)
+        {
+            var result = _rentalService.CheckIfMinFindexScoreEnough(customerId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+
     }
-    }
+}
 

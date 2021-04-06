@@ -17,21 +17,22 @@ namespace Business.Concrete
         
     {
         IRentalDal _rentalDal;
+        ICustomerService _customerService;
 
-        public RentalManager(IRentalDal rentalDal
-            
-            )
+        public RentalManager(IRentalDal rentalDal, ICustomerService customerService )
         {
             _rentalDal = rentalDal;
-            
+            _customerService = customerService;
         }
 
         public IResult Add(Rental rental)
         {
-            var result = BusinessRules.Run(CheckIfCarUsage(rental));
-            if (result !=null)
+            //var result = BusinessRules.Run(CheckIfCarUsage(rental));
+
+          var result = BusinessRules.Run(CheckIfMinFindexScoreEnough(rental.CustomerId));
+            if (result ==null)
             {
-                return new ErrorResult(Messages.RentalUnSuccessful);
+                return new ErrorResult(result.Message);
             }
 
             _rentalDal.Add(rental);
@@ -83,6 +84,17 @@ namespace Business.Concrete
             return new ErrorResult(Messages.RentalUnSuccessful);
         }
 
+        public IResult CheckIfMinFindexScoreEnough(int customerId)
+        {
+            var result = _customerService.GetById(customerId);
+            var newResult = _rentalDal.GetRentalDetails(r => r.MinFindexScore <= result.Data.MinFindexScore).SingleOrDefault();
+            if (newResult!=null)
+            {
+                return new SuccessResult();
+            }
+            return new ErrorResult(Messages.InsufficientFindeexScore);
+
+        }
 
 
     }

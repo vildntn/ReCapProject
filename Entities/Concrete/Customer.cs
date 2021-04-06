@@ -11,6 +11,7 @@ namespace Entities.Concrete
         public int CustomerId { get; set; }
         
         public int UserId { get; set; }
+        public int MinFindexScore { get; set; }
         public string CompanyName { get; set; }
 
     }
