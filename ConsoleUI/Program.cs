@@ -12,12 +12,12 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new EfCarDal());
-            ColorManager colorManager = new ColorManager(new EfColorDal());
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-            UserManager userManager = new UserManager(new EfUserDal());
+            //CarManager carManager = new CarManager(new EfCarDal());
+            //ColorManager colorManager = new ColorManager(new EfColorDal());
+            //BrandManager brandManager = new BrandManager(new EfBrandDal());
+            //RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            //CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            //UserManager userManager = new UserManager(new EfUserDal());
             //User user1 = new User
             //{
             //    FirstName = "Ece2",
@@ -25,7 +25,7 @@ namespace ConsoleUI
             //};
             //userManager.Add(user1);
 
-            AddCustomer(userManager);
+            //AddCustomer(userManager);
             //RentalCar(rentalManager);
 
             //Brand addBrand = new Brand() { BrandName="Isuzu"};
