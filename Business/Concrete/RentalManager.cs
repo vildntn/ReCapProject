@@ -18,22 +18,24 @@ namespace Business.Concrete
     {
         IRentalDal _rentalDal;
         ICustomerService _customerService;
+        ICarService _carService;
 
-        public RentalManager(IRentalDal rentalDal, ICustomerService customerService )
+        public RentalManager(IRentalDal rentalDal, ICustomerService customerService ,ICarService carService)
         {
             _rentalDal = rentalDal;
             _customerService = customerService;
+            _carService=carService;
         }
 
         public IResult Add(Rental rental)
         {
             //var result = BusinessRules.Run(CheckIfCarUsage(rental));
 
-          var result = BusinessRules.Run(CheckIfMinFindexScoreEnough(rental.CustomerId));
-            if (result ==null)
-            {
-                return new ErrorResult(result.Message);
-            }
+          //var result = BusinessRules.Run(CheckIfMinFindexScoreEnough(rental));
+          //  if (result ==null)
+          //  {
+          //      return new ErrorResult(result.Message);
+          //  }
 
             _rentalDal.Add(rental);
             return new SuccessResult(Messages.RentalAdded);
@@ -84,15 +86,16 @@ namespace Business.Concrete
             return new ErrorResult(Messages.RentalUnSuccessful);
         }
 
-        public IResult CheckIfMinFindexScoreEnough(int customerId)
+        public IResult CheckIfMinFindexScoreEnough(Rental rental)
         {
-            var result = _customerService.GetById(customerId);
-            var newResult = _rentalDal.GetRentalDetails(r => r.MinFindexScore <= result.Data.MinFindexScore).SingleOrDefault();
-            if (newResult!=null)
+            var result = _customerService.GetById(rental.CustomerId);
+            var newResult = _carService.GetById(rental.CarId);
+            
+            if (newResult.Data.MinFindexScore<=result.Data.MinFindexScore)
             {
                 return new SuccessResult();
             }
-            return new ErrorResult(Messages.InsufficientFindeexScore);
+            return new ErrorResult(Messages.InsufficientFindeexScore); 
 
         }
 

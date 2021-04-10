@@ -104,9 +104,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("checkifminfindexscoreenough")]
-        public IActionResult CheckIfMinFindexScoreEnough(int customerId)
+        public IActionResult CheckIfMinFindexScoreEnough(Rental rental)
         {
-            var result = _rentalService.CheckIfMinFindexScoreEnough(customerId);
+            var result = _rentalService.CheckIfMinFindexScoreEnough(rental);
             if (result.Success)
             {
                 return Ok(result);

@@ -19,6 +19,6 @@ namespace Business.Abstact
         IResult Update(Rental rental);
         IDataResult<Rental> GetById(int id);
         IResult CheckIfCarUsage(Rental rental);
-        IResult CheckIfMinFindexScoreEnough(int customerId);
+        IResult CheckIfMinFindexScoreEnough(Rental rental);
     }
 }

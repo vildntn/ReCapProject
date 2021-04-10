@@ -15,7 +15,7 @@ namespace Business.Abstact
         IDataResult<List<CreditCard>> GetAll();
     
         IDataResult<CreditCard> GetById(int id);
-        IResult IsCreditCardExist(CreditCard creditCard);
+      
 
     }
 }

@@ -79,18 +79,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("iscreditcardexist")]
-        public IActionResult IsCreditCardExist(CreditCard creditCard)
-        {
-            var result = _creditCardService.IsCreditCardExist(creditCard);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-
-            return BadRequest(result);
-        }
-
+       
 
     }
 }
