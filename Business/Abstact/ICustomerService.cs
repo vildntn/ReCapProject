@@ -15,6 +15,7 @@ namespace Business.Abstact
         IResult Delete(Customer customer);
 
         IResult Update(Customer customer);
+  
         IDataResult<List<CustomerDetailDto>> GetCustomerDetails();
 
 
